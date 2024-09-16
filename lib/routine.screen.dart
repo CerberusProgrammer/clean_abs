@@ -32,9 +32,18 @@ class RoutineScreen extends StatelessWidget {
               color: colorScheme.surface,
               child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    exercise.name,
-                    style: textTheme.bodyLarge,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        exercise.name,
+                        style: textTheme.bodyLarge,
+                      ),
+                      Text(
+                        "${exercise.repetitions} Repetitions",
+                        style: textTheme.bodySmall,
+                      ),
+                    ],
                   )))),
         ],
       ),

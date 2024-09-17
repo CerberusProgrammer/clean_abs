@@ -20,7 +20,10 @@ class RoutineScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         children: [
-          CardRoutine(routine: routine),
+          CardRoutine(
+            routine: routine,
+            extraChips: ['${routine.sets} sets'],
+          ),
           const SizedBox(height: 8),
           Card(
             color: colorScheme.surface,
@@ -31,25 +34,29 @@ class RoutineScreen extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           ...routine.exercises.map((exercise) => Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4.0),
-            child: ExpansionTile(title: 
-                          Text(
-                            exercise.name,
-                            style: textTheme.bodyLarge,
-                          ),
-                          subtitle: Text(
-                          "${exercise.repetitions} Repetitions",
-                          style: textTheme.bodySmall,
-                        ),
-                          children: [
-                            Text(
-                              exercise.description,
-                              style: textTheme.bodyMedium,
-                            ),
-                          ],
-                          ),
-          )),
+                padding: const EdgeInsets.symmetric(vertical: 4.0),
+                child: ExpansionTile(
+                  title: Text(
+                    exercise.name,
+                    style: textTheme.bodyLarge,
+                  ),
+                  subtitle: Text(
+                    "${exercise.repetitions} Repetitions",
+                    style: textTheme.bodySmall,
+                  ),
+                  children: [
+                    Text(
+                      exercise.description,
+                      style: textTheme.bodyMedium,
+                    ),
+                  ],
+                ),
+              )),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.play_arrow),
       ),
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (index) {

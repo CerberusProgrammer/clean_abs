@@ -16,14 +16,9 @@ class HomeScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         children: routines
             .map((routine) => CardRoutine(
-                  routine: routine,
-                  onTap: () {
-                    Navigator.pushNamed(
-                      context,
-                      '/routine/${routine.name}',
-                    );
-                  },
-                ))
+                routine: routine,
+                onTap: () =>
+                    Navigator.pushNamed(context, '/routine/${routine.name}')))
             .toList(),
       ),
       bottomNavigationBar: NavigationBar(

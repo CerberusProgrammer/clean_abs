@@ -3,9 +3,10 @@ import 'package:clean_abs/config/theme/text.theme.dart';
 import 'package:flutter/material.dart';
 
 class CardRoutine extends StatelessWidget {
-  const CardRoutine({super.key, required this.routine, this.onTap});
+  const CardRoutine({super.key, required this.routine, this.onTap, this.extraChips});
 
   final Routine routine;
+  final List<String>? extraChips;
   final Function()? onTap;
 
   @override
@@ -34,6 +35,9 @@ class CardRoutine extends StatelessWidget {
                   ...routine.type.map((type) => Chip(
                       label: Text(
                           type.name[0].toUpperCase() + type.name.substring(1))))
+                          ,
+                  if (extraChips != null)
+                    ...extraChips!.map((chip) => Chip(label: Text(chip)))
                 ],
               ),
             ],

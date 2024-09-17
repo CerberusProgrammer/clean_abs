@@ -31,5 +31,29 @@ ThemeData themeData = ThemeData(
     secondaryLabelStyle: textTheme.titleSmall,
     brightness: Brightness.dark,
   ),
+  listTileTheme:  ListTileThemeData(
+    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    titleTextStyle: textTheme.bodyLarge,
+    subtitleTextStyle: textTheme.bodyMedium,
+    tileColor: colorScheme.surface,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(20)),
+    ),
+  ),
+  expansionTileTheme: ExpansionTileThemeData(
+    backgroundColor: colorScheme.surface,
+    collapsedBackgroundColor: colorScheme.surface,
+    textColor: colorScheme.onSurface,
+    collapsedTextColor: colorScheme.onSurface,
+    iconColor: colorScheme.onSurface,
+    collapsedIconColor: colorScheme.onSurface,
+    collapsedShape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(20)),
+    ),
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(20)),
+    ),
+    childrenPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+  ),
   colorScheme: colorScheme,
 );

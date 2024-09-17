@@ -21,6 +21,7 @@ class RoutineScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         children: [
           CardRoutine(routine: routine),
+          const SizedBox(height: 8),
           Card(
             color: colorScheme.surface,
             child: Padding(
@@ -28,23 +29,26 @@ class RoutineScreen extends StatelessWidget {
               child: Text(routine.description, style: textTheme.bodyMedium),
             ),
           ),
-          ...routine.exercises.map((exercise) => Card(
-              color: colorScheme.surface,
-              child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        exercise.name,
-                        style: textTheme.bodyLarge,
-                      ),
-                      Text(
-                        "${exercise.repetitions} Repetitions",
-                        style: textTheme.bodySmall,
-                      ),
-                    ],
-                  )))),
+          const SizedBox(height: 4),
+          ...routine.exercises.map((exercise) => Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4.0),
+            child: ExpansionTile(title: 
+                          Text(
+                            exercise.name,
+                            style: textTheme.bodyLarge,
+                          ),
+                          subtitle: Text(
+                          "${exercise.repetitions} Repetitions",
+                          style: textTheme.bodySmall,
+                        ),
+                          children: [
+                            Text(
+                              exercise.description,
+                              style: textTheme.bodyMedium,
+                            ),
+                          ],
+                          ),
+          )),
         ],
       ),
       bottomNavigationBar: NavigationBar(

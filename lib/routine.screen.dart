@@ -55,7 +55,8 @@ class RoutineScreen extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: ()  =>
+                    Navigator.pushNamed(context, '/routine/${routine.name}/workout'),
         child: const Icon(Icons.play_arrow),
       ),
       bottomNavigationBar: NavigationBar(

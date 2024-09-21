@@ -12,7 +12,7 @@ class RoutineView extends StatefulWidget {
 }
 
 class _RoutineViewState extends State<RoutineView> {
-  int _counter = 3;
+  int _counter = 13;
   late Timer _timer;
 
   @override
@@ -22,7 +22,7 @@ class _RoutineViewState extends State<RoutineView> {
   }
 
   void _startCountdown() {
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         if (_counter > 0) {
           _counter--;
@@ -47,21 +47,17 @@ class _RoutineViewState extends State<RoutineView> {
       appBar: AppBar(
         title: Text(routine.name),
       ),
-      body: PageView(
-        children: [
-          Container(
-            color: Colors.red,
-            child: Center(
-              child: _counter > 0
-                  ? AnimatedCircularProgress(
-                      size: 300.0, // Customize the size
-                      color: Colors.blue, // Customize the color
-                      durationSeconds: 3, // Customize the duration
-                    )
-                  : Container(), // Empty container when counter is 0
-            ),
-          ),
-        ],
+      body: Center(
+        child: _counter > 0
+            ? AnimatedCircularProgress(
+                size: 300,
+                color: Colors.white,
+                backgroundColor: Colors.white.withOpacity(0.5),
+                durationSeconds: _counter,
+                strokeWidth: 30.0,
+                textSize: 48.0,
+              )
+            : Container(),
       ),
     );
   }
@@ -70,13 +66,19 @@ class _RoutineViewState extends State<RoutineView> {
 class AnimatedCircularProgress extends StatefulWidget {
   final double size;
   final Color color;
+  final Color backgroundColor;
   final int durationSeconds;
+  final double strokeWidth;
+  final double textSize;
 
   const AnimatedCircularProgress({
     Key? key,
     this.size = 200.0,
     this.color = Colors.blue,
+    this.backgroundColor = Colors.grey,
     this.durationSeconds = 3,
+    this.strokeWidth = 8.0,
+    this.textSize = 24.0,
   }) : super(key: key);
 
   @override
@@ -109,21 +111,27 @@ class _AnimatedCircularProgressState extends State<AnimatedCircularProgress>
       child: AnimatedBuilder(
         animation: _controller,
         builder: (context, child) {
-          return SizedBox(
+          return Container(
             width: widget.size,
             height: widget.size,
             child: Stack(
               alignment: Alignment.center,
               children: [
-                CircularProgressIndicator(
-                  value: _controller.value,
-                  backgroundColor: Colors.grey,
-                  valueColor: AlwaysStoppedAnimation<Color>(widget.color),
-                  strokeWidth: 8.0,
+                CustomPaint(
+                  size: Size(widget.size, widget.size),
+                  painter: CircularProgressPainter(
+                    progress: _controller.value,
+                    color: widget.color,
+                    backgroundColor: widget.backgroundColor,
+                    strokeWidth: widget.strokeWidth,
+                  ),
                 ),
                 Text(
                   '${(widget.durationSeconds - (_controller.value * widget.durationSeconds)).round()}',
-                  style: TextStyle(color: Colors.white, fontSize: 48),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: widget.textSize,
+                  ),
                 ),
               ],
             ),
@@ -131,5 +139,51 @@ class _AnimatedCircularProgressState extends State<AnimatedCircularProgress>
         },
       ),
     );
+  }
+}
+
+class CircularProgressPainter extends CustomPainter {
+  final double progress;
+  final Color color;
+  final Color backgroundColor;
+  final double strokeWidth;
+
+  CircularProgressPainter({
+    required this.progress,
+    required this.color,
+    required this.backgroundColor,
+    required this.strokeWidth,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final Paint backgroundPaint = Paint()
+      ..color = backgroundColor
+      ..strokeWidth = strokeWidth
+      ..style = PaintingStyle.stroke;
+
+    final Paint progressPaint = Paint()
+      ..color = color
+      ..strokeWidth = strokeWidth
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.round;
+
+    final Offset center = Offset(size.width / 2, size.height / 2);
+    final double radius = (size.width - strokeWidth) / 2;
+
+    canvas.drawCircle(center, radius, backgroundPaint);
+    final double sweepAngle = 2 * 3.141592653589793 * progress;
+    canvas.drawArc(
+      Rect.fromCircle(center: center, radius: radius),
+      -3.141592653589793 / 2,
+      sweepAngle,
+      false,
+      progressPaint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return true;
   }
 }

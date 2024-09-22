@@ -2,6 +2,7 @@ import 'package:clean_abs/config/theme/theme.dart';
 import 'package:clean_abs/home.screen.dart';
 import 'package:clean_abs/routine.screen.dart';
 import 'package:clean_abs/routine-timer.view.dart';
+import 'package:clean_abs/stats.screen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MainApp());
@@ -33,6 +34,7 @@ class MainApp extends StatelessWidget {
         },
         routes: {
           '/': (context) => const HomeScreen(),
+          '/stats': (context) => const StatsScreen(),
         });
   }
 }

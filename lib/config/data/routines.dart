@@ -116,4 +116,160 @@ List<Routine> routines = [
       ),
     ],
   ),
+  Routine(
+    name: 'Abs for beginners',
+    description: 'A routine to start working on your abs',
+    image: 'assets/images/abs_for_beginners.jpg',
+    difficulty: Difficulty.easy,
+    type: [ExerciseType.full],
+    duration: 10,
+    restPerExercise: 10,
+    restPerSet: 30,
+    sets: 2,
+    calories: 50,
+    exercises: [
+      Exercise(
+        name: 'Knee to Elbow',
+        description:
+            'Lay down on your back, bend your knees and place your hands behind your head. Lift your shoulders off the ground and bring your right elbow to your left knee. Switch sides.',
+        image: 'assets/images/knee_to_elbow.jpg',
+        repetitions: 10,
+        duration: null,
+      ),
+      Exercise(
+        name: 'Leg Raise',
+        description:
+            'Lay down on your back, place your hands under your glutes and lift your legs up. Slowly lower your legs back to the ground.',
+        image: 'assets/images/leg_raise.jpg',
+        repetitions: 10,
+        duration: null,
+      ),
+      Exercise(
+        name: 'Russian Twist',
+        description:
+            'Sit down on the ground, bend your knees and lift your legs up. Hold your hands together and twist your torso to the left and to the right.',
+        image: 'assets/images/russian_twist.jpg',
+        repetitions: 10,
+        duration: null,
+      ),
+    ],
+  ),
+  Routine(
+    name: 'Abs don\'t touch the ground I',
+    description:
+        'A routine to make your abs without touching the ground (Full of Planks, oh yeah!)',
+    image: 'assets/images/abs_dont_touch_the_ground.jpg',
+    difficulty: Difficulty.hard,
+    type: [ExerciseType.full],
+    duration: 15,
+    restPerExercise: 10,
+    restPerSet: 30,
+    sets: 1,
+    calories: 100,
+    exercises: [
+      Exercise(
+        name: 'Plank',
+        description:
+            'Start in a push-up position, but with your elbows on the ground. Keep your body straight and hold this position.',
+        image: 'assets/images/plank.jpg',
+        repetitions: null,
+        duration: 15,
+      ),
+      Exercise(
+        name: 'Plank with Leg Left Lift',
+        description:
+            'Start in a push-up position, but with your elbows on the ground. Keep your body straight and lift left leg up. Hold this position.',
+        image: 'assets/images/plank_with_leg_lift.jpg',
+        repetitions: null,
+        duration: 15,
+      ),
+      Exercise(
+        name: 'Plank with Leg Right Lift',
+        description:
+            'Start in a push-up position, but with your elbows on the ground. Keep your body straight and lift right leg up. Hold this position.',
+        image: 'assets/images/plank_with_leg_lift.jpg',
+        repetitions: null,
+        duration: 15,
+      ),
+      Exercise(
+        name: 'Plank with Arm Left Lift',
+        description:
+            'Start in a push-up position, but with your elbows on the ground. Keep your body straight and lift left arm up. Hold this position.',
+        image: 'assets/images/plank_with_arm_lift.jpg',
+        repetitions: null,
+        duration: 15,
+      ),
+      Exercise(
+        name: 'Plank with Arm Right Lift',
+        description:
+            'Start in a push-up position, but with your elbows on the ground. Keep your body straight and lift right arm up. Hold this position.',
+        image: 'assets/images/plank_with_arm_lift.jpg',
+        repetitions: null,
+        duration: 15,
+      ),
+      Exercise(
+        name: 'Spiderman Plank',
+        description:
+            'Start in a push-up position, but with your elbows on the ground. Keep your body straight and bring your right knee to your right elbow. Switch sides.',
+        image: 'assets/images/spiderman_plank.jpg',
+        repetitions: null,
+        duration: 15,
+      ),
+      Exercise(
+        name: 'Plank with Hip Dip',
+        description:
+            'Start in a push-up position, but with your elbows on the ground. Keep your body straight and dip your hips to the left and to the right.',
+        image: 'assets/images/plank_with_hip_dip.jpg',
+        repetitions: null,
+        duration: 15,
+      ),
+    ],
+  ),
+  Routine(
+    name: 'Abs don\'t touch the ground II',
+    description:
+        'A routine to make your abs without touching the ground (Full of Planks, oh yeah!)',
+    image: 'assets/images/abs_dont_touch_the_ground.jpg',
+    difficulty: Difficulty.hard,
+    type: [ExerciseType.full],
+    duration: 15,
+    restPerExercise: 10,
+    restPerSet: 30,
+    sets: 1,
+    calories: 100,
+    exercises: [
+      Exercise(
+        name: 'Plank & Leg touch elbows',
+        description:
+            'Start in a push-up position, but with your elbows on the ground. Keep your body straight and touch your left elbow with your right knee. Switch sides.',
+        image: 'assets/images/plank_with_leg_touch_elbows.jpg',
+        repetitions: 10,
+        duration: null,
+      ),
+      Exercise(
+        name: 'Plank & Get up',
+        description:
+            'Start in a push-up position, but with your elbows on the ground. Keep your body straight and get up. Go back to the initial position.',
+        image: 'assets/images/plank_with_get_up.jpg',
+        repetitions: 10,
+        duration: null,
+      ),
+      Exercise(
+        name: 'Plank & Leg touch hand',
+        description:
+            'Start in a push-up position, but with your elbows on the ground. Keep your body straight and touch your left hand with your right foot. Switch sides.',
+        image: 'assets/images/plank_with_leg_touch_hand.jpg',
+        repetitions: 10,
+        duration: null,
+      ),
+      Exercise(
+        name: 'Plank & Hand touch shoulder',
+        description:
+            'Start in a push-up position, but with your elbows on the ground. Keep your body straight and touch your left shoulder with your right hand. Switch sides.',
+        image: 'assets/images/plank_with_hand_touch_shoulder.jpg',
+        repetitions: 10,
+        duration: null,
+      ),
+    ],
+  )
 ];

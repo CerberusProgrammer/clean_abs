@@ -7,6 +7,7 @@ class AnimatedCircularProgress extends StatefulWidget {
   final int durationSeconds;
   final double strokeWidth;
   final double textSize;
+  final VoidCallback? onComplete;
 
   const AnimatedCircularProgress({
     super.key,
@@ -16,6 +17,7 @@ class AnimatedCircularProgress extends StatefulWidget {
     this.durationSeconds = 3,
     this.strokeWidth = 8.0,
     this.textSize = 24.0,
+    this.onComplete,
   });
 
   @override
@@ -33,7 +35,13 @@ class _AnimatedCircularProgressState extends State<AnimatedCircularProgress>
     _controller = AnimationController(
       duration: Duration(seconds: widget.durationSeconds),
       vsync: this,
-    )..forward();
+    )
+      ..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          widget.onComplete?.call();
+        }
+      })
+      ..forward();
   }
 
   @override

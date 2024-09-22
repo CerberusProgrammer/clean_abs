@@ -19,7 +19,7 @@ class HomeLayout extends StatelessWidget {
           ),
           NavigationDestination(
             icon: Icon(Icons.search),
-            label: 'Search',
+            label: 'Stats',
           ),
         ],
       ),

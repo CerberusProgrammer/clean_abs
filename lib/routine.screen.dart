@@ -3,6 +3,7 @@ import 'package:clean_abs/config/data/routines.dart';
 import 'package:clean_abs/config/theme/color.theme.dart';
 import 'package:clean_abs/config/theme/text.theme.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class RoutineScreen extends StatelessWidget {
   final String id;
@@ -57,18 +58,15 @@ class RoutineScreen extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            Navigator.pushNamed(context, '/routine/${routine.name}/workout'),
+        onPressed: () => context.go('/routine/${routine.name}/workout'),
         child: const Icon(Icons.play_arrow),
       ),
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (index) {
           if (index == 0) {
-            Navigator.of(context)
-                .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
+            context.go('/');
           } else {
-            Navigator.of(context).pushNamedAndRemoveUntil(
-                '/stats', (Route<dynamic> route) => false);
+            context.go('/stats');
           }
         },
         destinations: const [

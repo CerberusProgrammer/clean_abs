@@ -2,18 +2,19 @@ import 'dart:async';
 import 'package:clean_abs/animated_circular_progress.widget.dart';
 import 'package:clean_abs/config/data/routines.dart';
 import 'package:clean_abs/config/theme/color.theme.dart';
+import 'package:clean_abs/routine.view.dart';
 import 'package:flutter/material.dart';
 
-class RoutineView extends StatefulWidget {
+class RoutineTimerView extends StatefulWidget {
   final String id;
 
-  const RoutineView({super.key, required this.id});
+  const RoutineTimerView({super.key, required this.id});
 
   @override
-  State<RoutineView> createState() => _RoutineViewState();
+  State<RoutineTimerView> createState() => _RoutineTimerViewState();
 }
 
-class _RoutineViewState extends State<RoutineView> {
+class _RoutineTimerViewState extends State<RoutineTimerView> {
   int _counter = 5;
   late Timer _timer;
 
@@ -46,10 +47,6 @@ class _RoutineViewState extends State<RoutineView> {
     final routine = routines.firstWhere((routine) => routine.name == widget.id);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(routine.name),
-        backgroundColor: colorScheme.primary,
-      ),
       backgroundColor: colorScheme.primary,
       body: Center(
         child: _counter > 0
@@ -61,7 +58,7 @@ class _RoutineViewState extends State<RoutineView> {
                 strokeWidth: 30.0,
                 textSize: 48.0,
               )
-            : Container(),
+            : RoutineView(routine: routine),
       ),
     );
   }

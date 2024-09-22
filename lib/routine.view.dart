@@ -3,19 +3,21 @@ import 'package:clean_abs/animated_circular_progress.widget.dart';
 import 'package:clean_abs/config/models/exercise_stat.dart';
 import 'package:clean_abs/config/models/routine.dart';
 import 'package:clean_abs/config/models/routine_stat.dart';
+import 'package:clean_abs/providers/routine_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class RoutineView extends StatefulWidget {
+class RoutineView extends ConsumerStatefulWidget {
   final Routine routine;
 
   const RoutineView({super.key, required this.routine});
 
   @override
-  State<RoutineView> createState() => _RoutineViewState();
+  ConsumerState<RoutineView> createState() => _RoutineViewState();
 }
 
-class _RoutineViewState extends State<RoutineView> {
+class _RoutineViewState extends ConsumerState<RoutineView> {
   int _currentExerciseIndex = 0;
   int _currentSet = 1;
   bool _isResting = false;
@@ -70,6 +72,7 @@ class _RoutineViewState extends State<RoutineView> {
         endTime: _routineEndTime,
         caloriesBurned: widget.routine.calories,
       );
+      ref.read(routineStatsProvider.notifier).addRoutineStat(routineStat);
       context.go('/routine/${widget.routine.name}/complete',
           extra: routineStat);
     }

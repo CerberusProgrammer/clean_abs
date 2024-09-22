@@ -66,6 +66,9 @@ class RoutineScreen extends StatelessWidget {
           if (index == 0) {
             Navigator.of(context)
                 .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
+          } else {
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                '/stats', (Route<dynamic> route) => false);
           }
         },
         destinations: const [
@@ -74,8 +77,8 @@ class RoutineScreen extends StatelessWidget {
             label: 'Home',
           ),
           NavigationDestination(
-            icon: Icon(Icons.search),
-            label: 'Search',
+            icon: Icon(Icons.bar_chart),
+            label: 'Stats',
           ),
         ],
       ),

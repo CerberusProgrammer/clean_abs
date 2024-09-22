@@ -41,7 +41,9 @@ class RoutineScreen extends StatelessWidget {
                     style: textTheme.bodyLarge,
                   ),
                   subtitle: Text(
-                    "${exercise.repetitions} Repetitions",
+                    exercise.repetitions != null
+                        ? "${exercise.repetitions} Repetitions"
+                        : "${exercise.duration} Seconds",
                     style: textTheme.bodySmall,
                   ),
                   children: [
@@ -55,8 +57,8 @@ class RoutineScreen extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: ()  =>
-                    Navigator.pushNamed(context, '/routine/${routine.name}/workout'),
+        onPressed: () =>
+            Navigator.pushNamed(context, '/routine/${routine.name}/workout'),
         child: const Icon(Icons.play_arrow),
       ),
       bottomNavigationBar: NavigationBar(

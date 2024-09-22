@@ -146,11 +146,12 @@ class _RoutineViewState extends State<RoutineView> {
                   exercise.duration != null
                       ? AnimatedCircularProgress(
                           size: 200.0,
-                          color: Colors.blue,
-                          backgroundColor: Colors.grey,
+                          color: Colors.white,
+                          backgroundColor: Colors.white.withOpacity(0.5),
                           durationSeconds: exercise.duration!,
-                          strokeWidth: 8.0,
-                          textSize: 24.0,
+                          strokeWidth: 30.0,
+                          textSize: 48.0,
+                          onComplete: _nextExercise,
                         )
                       : Column(
                           children: [

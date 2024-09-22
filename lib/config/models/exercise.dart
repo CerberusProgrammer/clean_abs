@@ -2,7 +2,7 @@ class Exercise {
   String name;
   String description;
   String image;
-  int repetitions;
+  int? repetitions;
   int? duration;
 
   Exercise({

@@ -2,6 +2,7 @@ import 'package:clean_abs/config/models/exercise_stat.dart';
 import 'package:clean_abs/config/models/routine_stat.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:go_router/go_router.dart';
 
 class RoutineCompleteView extends StatelessWidget {
   final RoutineStat routineStat;
@@ -24,7 +25,7 @@ class RoutineCompleteView extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pop(context);
+          context.go('/');
         },
         child: const Icon(Icons.done),
       ),
@@ -36,11 +37,6 @@ class ExerciseStatsList extends StatelessWidget {
   final List<ExerciseStat> exerciseStats;
 
   const ExerciseStatsList({super.key, required this.exerciseStats});
-
-  String _formatDateTime(DateTime dateTime) {
-    final DateFormat formatter = DateFormat('MMM dd yyyy hh:mm a');
-    return formatter.format(dateTime);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +63,11 @@ class ExerciseStatsList extends StatelessWidget {
         },
       ),
     );
+  }
+
+  String _formatDateTime(DateTime dateTime) {
+    final DateFormat formatter = DateFormat('MMM dd yyyy hh:mm a');
+    return formatter.format(dateTime);
   }
 }
 

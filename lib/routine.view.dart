@@ -3,8 +3,8 @@ import 'package:clean_abs/animated_circular_progress.widget.dart';
 import 'package:clean_abs/config/models/exercise_stat.dart';
 import 'package:clean_abs/config/models/routine.dart';
 import 'package:clean_abs/config/models/routine_stat.dart';
-import 'package:clean_abs/routine-complete.view.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class RoutineView extends StatefulWidget {
   final Routine routine;
@@ -70,11 +70,8 @@ class _RoutineViewState extends State<RoutineView> {
         endTime: _routineEndTime,
         caloriesBurned: widget.routine.calories,
       );
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => RoutineCompleteView(routineStat: routineStat),
-        ),
-      );
+      context.go('/routine/${widget.routine.name}/complete',
+          extra: routineStat);
     }
   }
 

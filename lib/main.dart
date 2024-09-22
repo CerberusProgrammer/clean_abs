@@ -20,7 +20,7 @@ class MainApp extends StatelessWidget {
             if (parts.length == 4 && parts[3] == 'workout') {
               final id = parts[2];
               return MaterialPageRoute(
-                builder: (context) => RoutineView(id: id),
+                builder: (context) => RoutineTimerView(id: id),
               );
             } else if (parts.length == 3) {
               final id = parts[2];

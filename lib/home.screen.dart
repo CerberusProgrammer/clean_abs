@@ -15,7 +15,6 @@ class HomeScreen extends StatelessWidget {
       body: LayoutBuilder(
         builder: (context, constraints) {
           if (constraints.maxWidth < 600) {
-            // Modo móvil: ListView
             return ListView(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               children: routines
@@ -29,7 +28,6 @@ class HomeScreen extends StatelessWidget {
                   .toList(),
             );
           } else {
-            // Modo tablet/web: Wrap
             int columns = 2;
             if (constraints.maxWidth > 1000) {
               columns = 3;
@@ -66,10 +64,9 @@ class HomeScreen extends StatelessWidget {
       ),
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (index) {
-          if (index == 0) {
-            Navigator.pushNamed(context, '/');
-          } else {
-            Navigator.pushNamed(context, '/stats');
+          if (index == 1) {
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                '/stats', (Route<dynamic> route) => false);
           }
         },
         destinations: const [
@@ -78,7 +75,7 @@ class HomeScreen extends StatelessWidget {
             label: 'Home',
           ),
           NavigationDestination(
-            icon: Icon(Icons.stacked_line_chart),
+            icon: Icon(Icons.bar_chart),
             label: 'Stats',
           ),
         ],

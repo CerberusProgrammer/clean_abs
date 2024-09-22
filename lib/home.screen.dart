@@ -1,5 +1,6 @@
 import 'package:clean_abs/config/data/routines.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'components/card.routine.dart';
 
@@ -22,8 +23,8 @@ class HomeScreen extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 8),
                         child: CardRoutine(
                             routine: routine,
-                            onTap: () => Navigator.pushNamed(
-                                context, '/routine/${routine.name}')),
+                            onTap: () =>
+                                context.go('/routine/${routine.name}')),
                       ))
                   .toList(),
             );
@@ -52,8 +53,7 @@ class HomeScreen extends StatelessWidget {
                     width: itemWidth,
                     child: CardRoutine(
                       routine: routine,
-                      onTap: () => Navigator.pushNamed(
-                          context, '/routine/${routine.name}'),
+                      onTap: () => context.go('/routine/${routine.name}'),
                     ),
                   );
                 }).toList(),
@@ -65,8 +65,7 @@ class HomeScreen extends StatelessWidget {
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (index) {
           if (index == 1) {
-            Navigator.of(context).pushNamedAndRemoveUntil(
-                '/stats', (Route<dynamic> route) => false);
+            context.go('/stats');
           }
         },
         destinations: const [

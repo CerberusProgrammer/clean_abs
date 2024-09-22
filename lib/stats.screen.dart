@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class StatsScreen extends StatelessWidget {
   const StatsScreen({super.key});
@@ -16,8 +17,7 @@ class StatsScreen extends StatelessWidget {
         selectedIndex: 1,
         onDestinationSelected: (index) {
           if (index == 0) {
-            Navigator.of(context)
-                .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
+            context.go('/');
           }
         },
         destinations: const [

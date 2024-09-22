@@ -65,14 +65,21 @@ class HomeScreen extends StatelessWidget {
         },
       ),
       bottomNavigationBar: NavigationBar(
+        onDestinationSelected: (index) {
+          if (index == 0) {
+            Navigator.pushNamed(context, '/');
+          } else {
+            Navigator.pushNamed(context, '/stats');
+          }
+        },
         destinations: const [
           NavigationDestination(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           NavigationDestination(
-            icon: Icon(Icons.search),
-            label: 'Search',
+            icon: Icon(Icons.stacked_line_chart),
+            label: 'Stats',
           ),
         ],
       ),

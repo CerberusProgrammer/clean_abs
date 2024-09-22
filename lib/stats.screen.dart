@@ -2,6 +2,7 @@ import 'package:clean_abs/providers/routine_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 
 class StatsScreen extends ConsumerWidget {
   const StatsScreen({super.key});
@@ -22,12 +23,20 @@ class StatsScreen extends ConsumerWidget {
               padding: const EdgeInsets.all(16.0),
               itemCount: routineStats.length,
               itemBuilder: (context, index) {
-                final routineStat = routineStats[index];
-                return Card(
-                  child: ListTile(
-                    title: Text(routineStat.routine.name),
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: ExpansionTile(
+                    title: Text(routineStats[index].routine.name),
                     subtitle: Text(
-                        'Completed on ${routineStat.endTime.toLocal().toString().split(' ')[0]}'),
+                        'Completed on ${DateFormat('yyyy MMM dd, h:mm a').format(routineStats[index].endTime.toLocal())}'),
+                    children: routineStats[index]
+                        .exerciseStats
+                        .map((exerciseStat) => ListTile(
+                              title: Text(exerciseStat.exercise.name),
+                              subtitle: Text(
+                                  'You did ${exerciseStat.exercise.repetitions != null ? '${exerciseStat.exercise.repetitions} Repetitions in ${exerciseStat.duration.inSeconds} Seconds' : '${exerciseStat.exercise.duration} Seconds'} '),
+                            ))
+                        .toList(),
                   ),
                 );
               },

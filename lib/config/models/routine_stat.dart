@@ -17,4 +17,22 @@ class RoutineStat {
   });
 
   Duration get totalDuration => endTime.difference(startTime);
+
+  Map<String, dynamic> toJson() => {
+        'routine': routine.toJson(),
+        'exerciseStats': exerciseStats.map((e) => e.toJson()).toList(),
+        'startTime': startTime.toIso8601String(),
+        'endTime': endTime.toIso8601String(),
+        'caloriesBurned': caloriesBurned,
+      };
+
+  factory RoutineStat.fromJson(Map<String, dynamic> json) => RoutineStat(
+        routine: Routine.fromJson(json['routine']),
+        exerciseStats: (json['exerciseStats'] as List)
+            .map((e) => ExerciseStat.fromJson(e))
+            .toList(),
+        startTime: DateTime.parse(json['startTime']),
+        endTime: DateTime.parse(json['endTime']),
+        caloriesBurned: json['caloriesBurned'],
+      );
 }

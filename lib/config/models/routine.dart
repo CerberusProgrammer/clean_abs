@@ -30,4 +30,35 @@ class Routine {
     required this.calories,
     required this.exercises,
   });
+
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'description': description,
+        'image': image,
+        'difficulty': difficulty.index,
+        'type': type.map((e) => e.index).toList(),
+        'duration': duration,
+        'restPerExercise': restPerExercise,
+        'restPerSet': restPerSet,
+        'sets': sets,
+        'calories': calories,
+        'exercises': exercises.map((e) => e.toJson()).toList(),
+      };
+
+  factory Routine.fromJson(Map<String, dynamic> json) => Routine(
+        name: json['name'],
+        description: json['description'],
+        image: json['image'],
+        difficulty: Difficulty.values[json['difficulty']],
+        type:
+            (json['type'] as List).map((e) => ExerciseType.values[e]).toList(),
+        duration: json['duration'],
+        restPerExercise: json['restPerExercise'],
+        restPerSet: json['restPerSet'],
+        sets: json['sets'],
+        calories: json['calories'],
+        exercises: (json['exercises'] as List)
+            .map((e) => Exercise.fromJson(e))
+            .toList(),
+      );
 }

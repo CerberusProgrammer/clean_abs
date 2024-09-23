@@ -113,6 +113,21 @@ class _RoutineViewState extends ConsumerState<RoutineView> {
       appBar: AppBar(
         title: Text(
             '${widget.routine.name} - Set $_currentSet/${widget.routine.sets}'),
+            actions: [
+              IconButton(icon: const Icon(Icons.info_outline), onPressed: () => showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title:  Text('About ${exercise.name}'),
+                  content: Text(exercise.description),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text('Close'),
+                    ),
+                  ],
+                )
+              ),)
+            ]
       ),
       body: Center(
         child: _isResting

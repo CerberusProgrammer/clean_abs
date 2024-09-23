@@ -1,8 +1,8 @@
 import 'dart:async';
-import 'package:clean_abs/animated_circular_progress.widget.dart';
+import 'package:clean_abs/components/animated_circular_progress.widget.dart';
 import 'package:clean_abs/config/data/routines.dart';
 import 'package:clean_abs/config/theme/color.theme.dart';
-import 'package:clean_abs/routine.view.dart';
+import 'package:clean_abs/pages/routines/routine.view.dart';
 import 'package:flutter/material.dart';
 
 class RoutineTimerView extends StatefulWidget {

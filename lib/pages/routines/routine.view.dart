@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:clean_abs/animated_circular_progress.widget.dart';
+import 'package:clean_abs/components/animated_circular_progress.widget.dart';
 import 'package:clean_abs/config/models/exercise_stat.dart';
 import 'package:clean_abs/config/models/routine.dart';
 import 'package:clean_abs/config/models/routine_stat.dart';

@@ -2,7 +2,7 @@ import 'package:clean_abs/config/data/routines.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'components/card.routine.dart';
+import '../components/card.routine.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

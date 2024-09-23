@@ -1,10 +1,10 @@
 import 'package:clean_abs/config/models/routine_stat.dart';
-import 'package:clean_abs/home.screen.dart';
-import 'package:clean_abs/routine.get_ready.screen.dart';
-import 'package:clean_abs/routine.screen.dart';
-import 'package:clean_abs/routine-timer.view.dart';
-import 'package:clean_abs/stats.screen.dart';
-import 'package:clean_abs/routine-complete.view.dart';
+import 'package:clean_abs/pages/home.screen.dart';
+import 'package:clean_abs/pages/routines/routine.get_ready.screen.dart';
+import 'package:clean_abs/pages/routines/routine.screen.dart';
+import 'package:clean_abs/pages/routines/routine-timer.view.dart';
+import 'package:clean_abs/pages/stats/stats.screen.dart';
+import 'package:clean_abs/pages/routines/routine-complete.view.dart';
 import 'package:go_router/go_router.dart';
 
 final appRoutes = GoRouter(

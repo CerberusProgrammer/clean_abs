@@ -1,14 +1,16 @@
 class Exercise {
   String name;
   String description;
-  String image;
+  String? startImage;
+  String? finalImage;
   int? repetitions;
   int? duration;
 
   Exercise({
     required this.name,
     required this.description,
-    required this.image,
+    this.startImage,
+    this.finalImage,
     required this.repetitions,
     required this.duration,
   });
@@ -16,7 +18,8 @@ class Exercise {
   Map<String, dynamic> toJson() => {
         'name': name,
         'description': description,
-        'image': image,
+        'startImage': startImage,
+        'finalImage': finalImage,
         'repetitions': repetitions,
         'duration': duration,
       };
@@ -24,7 +27,8 @@ class Exercise {
   factory Exercise.fromJson(Map<String, dynamic> json) => Exercise(
         name: json['name'],
         description: json['description'],
-        image: json['image'],
+        startImage: json['startImage'],
+        finalImage: json['finalImage'],
         repetitions: json['repetitions'],
         duration: json['duration'],
       );

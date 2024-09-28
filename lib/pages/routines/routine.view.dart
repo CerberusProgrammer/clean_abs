@@ -27,6 +27,8 @@ class _RoutineViewState extends ConsumerState<RoutineView> {
   late DateTime _routineEndTime;
   final List<ExerciseStat> _exerciseStats = [];
   late DateTime _exerciseStartTime;
+  bool _showStartImage = true;
+  late Timer _imageTimer;
 
   @override
   void initState() {
@@ -34,6 +36,15 @@ class _RoutineViewState extends ConsumerState<RoutineView> {
     _restTime = widget.routine.restPerExercise ?? 0;
     _routineStartTime = DateTime.now();
     _exerciseStartTime = DateTime.now();
+    _startImageTimer();
+  }
+
+  void _startImageTimer() {
+    _imageTimer = Timer.periodic(const Duration(seconds: 2), (timer) {
+      setState(() {
+        _showStartImage = !_showStartImage;
+      });
+    });
   }
 
   void _nextExercise() {
@@ -102,6 +113,7 @@ class _RoutineViewState extends ConsumerState<RoutineView> {
   @override
   void dispose() {
     _restTimer.cancel();
+    _imageTimer.cancel();
     super.dispose();
   }
 
@@ -111,24 +123,25 @@ class _RoutineViewState extends ConsumerState<RoutineView> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-            '${widget.routine.name} - Set $_currentSet/${widget.routine.sets}'),
-            actions: [
-              IconButton(icon: const Icon(Icons.info_outline), onPressed: () => showDialog(
-                context: context,
-                builder: (context) => AlertDialog(
-                  title:  Text('About ${exercise.name}'),
-                  content: Text(exercise.description),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(context),
-                      child: const Text('Close'),
-                    ),
-                  ],
-                )
-              ),)
-            ]
-      ),
+          title: Text(
+              '${widget.routine.name} - Set $_currentSet/${widget.routine.sets}'),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.info_outline),
+              onPressed: () => showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                        title: Text('About ${exercise.name}'),
+                        content: Text(exercise.description),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.pop(context),
+                            child: const Text('Close'),
+                          ),
+                        ],
+                      )),
+            )
+          ]),
       body: Center(
         child: _isResting
             ? Column(
@@ -170,6 +183,22 @@ class _RoutineViewState extends ConsumerState<RoutineView> {
                         )
                       : Column(
                           children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 40.0,
+                                vertical: 30.0,
+                              ),
+                              child: _showStartImage
+                                  ? Image.asset(
+                                      exercise.startImage ?? '',
+                                      height: 150,
+                                    )
+                                  : Image.asset(
+                                      exercise.finalImage ?? '',
+                                      height: 150,
+                                    ),
+                            ),
+                            const SizedBox(height: 20),
                             Text(
                               'Repetitions: ${exercise.repetitions}',
                               style: const TextStyle(fontSize: 24),

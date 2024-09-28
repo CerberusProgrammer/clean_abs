@@ -55,8 +55,8 @@ final Exercise mountainClimber = Exercise(
   name: 'Mountain Climber',
   description:
       'Start in a push-up position, bring your right knee to your chest and then quickly switch to bring your left knee to your chest.',
-  startImage: 'assets/laydown.png',
-  finalImage: 'assets/crunch.png',
+  startImage: 'assets/mountain_climber_left.png',
+  finalImage: 'assets/mountain_climber_right.png',
   repetitions: 15,
   duration: null,
 );
@@ -65,8 +65,8 @@ final Exercise plank = Exercise(
   name: 'Plank',
   description:
       'Start in a push-up position, but with your elbows on the ground. Keep your body straight and hold this position.',
-  startImage: 'assets/laydown.png',
-  finalImage: 'assets/crunch.png',
+  startImage: 'assets/plank.png',
+  finalImage: 'assets/plank.png',
   repetitions: null,
   duration: 30,
 );

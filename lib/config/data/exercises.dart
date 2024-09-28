@@ -36,7 +36,7 @@ final Exercise legRaise = Exercise(
   description:
       'Lay down on your back, place your hands under your glutes and lift your legs up. Slowly lower your legs back to the ground.',
   startImage: 'assets/laydown.png',
-  finalImage: 'assets/crunch.png',
+  finalImage: 'assets/leg_raise.png',
   repetitions: 15,
   duration: null,
 );
@@ -45,8 +45,8 @@ final Exercise russianTwist = Exercise(
   name: 'Russian Twist',
   description:
       'Sit down on the ground, bend your knees and lift your legs up. Hold your hands together and twist your torso to the left and to the right.',
-  startImage: 'assets/laydown.png',
-  finalImage: 'assets/crunch.png',
+  startImage: 'assets/russian_twist_left.png',
+  finalImage: 'assets/russian_twist_right.png',
   repetitions: 15,
   duration: null,
 );

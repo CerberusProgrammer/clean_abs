@@ -189,14 +189,18 @@ class _RoutineViewState extends ConsumerState<RoutineView> {
                                 vertical: 30.0,
                               ),
                               child: _showStartImage
-                                  ? Image.asset(
-                                      exercise.startImage ?? '',
-                                      height: 150,
-                                    )
-                                  : Image.asset(
-                                      exercise.finalImage ?? '',
-                                      height: 150,
-                                    ),
+                                  ? exercise.startImage != null
+                                      ? Image.asset(
+                                          exercise.startImage!,
+                                          height: 150,
+                                        )
+                                      : null
+                                  : exercise.finalImage != null
+                                      ? Image.asset(
+                                          exercise.finalImage!,
+                                          height: 150,
+                                        )
+                                      : null,
                             ),
                             const SizedBox(height: 20),
                             Text(

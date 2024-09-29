@@ -31,6 +31,34 @@ class Routine {
     required this.exercises,
   });
 
+  Routine copyWith({
+    String? name,
+    String? description,
+    String? image,
+    Difficulty? difficulty,
+    List<ExerciseType>? type,
+    int? duration,
+    int? restPerExercise,
+    int? restPerSet,
+    int? sets,
+    int? calories,
+    List<Exercise>? exercises,
+  }) {
+    return Routine(
+      name: name ?? this.name,
+      description: description ?? this.description,
+      image: image ?? this.image,
+      difficulty: difficulty ?? this.difficulty,
+      type: type ?? this.type,
+      duration: duration ?? this.duration,
+      restPerExercise: restPerExercise ?? this.restPerExercise,
+      restPerSet: restPerSet ?? this.restPerSet,
+      sets: sets ?? this.sets,
+      calories: calories ?? this.calories,
+      exercises: exercises ?? this.exercises,
+    );
+  }
+
   Map<String, dynamic> toJson() => {
         'name': name,
         'description': description,

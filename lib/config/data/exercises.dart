@@ -75,8 +75,8 @@ final Exercise burpee = Exercise(
   name: 'Burpee',
   description:
       'Start standing, then squat down and place your hands on the ground. Kick your legs back and do a push-up. Bring your legs back to your chest and jump up.',
-  startImage: 'assets/laydown.png',
-  finalImage: 'assets/crunch.png',
+  startImage: 'assets/burpee_down.png',
+  finalImage: 'assets/burpee_up.png',
   repetitions: 10,
   duration: null,
 );

@@ -111,6 +111,56 @@ final Exercise jumpingJackPlank = Exercise(
   duration: null,
 );
 
+final Exercise kneeToHandLeftLeg = Exercise(
+  name: 'Knee to Hand & Left Leg',
+  description:
+      'Lay down on your back, bend your knees and place your hands behind your head. Lift your shoulders off the ground and bring your right elbow to your left knee.',
+  startImage: 'assets/laydown.png',
+  finalImage: 'assets/knee_to_hand_left_leg.png',
+  repetitions: 10,
+  duration: null,
+);
+
+final Exercise kneeToHandRightLeg = Exercise(
+  name: 'Knee to Hand & Right Leg',
+  description:
+      'Lay down on your back, bend your knees and place your hands behind your head. Lift your shoulders off the ground and bring your left elbow to your right knee.',
+  startImage: 'assets/laydown.png',
+  finalImage: 'assets/knee_to_hand_right_leg.png',
+  repetitions: 10,
+  duration: null,
+);
+
+final Exercise kneeToElbowLeftLeg = Exercise(
+  name: 'Knee to Elbow & Left Leg',
+  description:
+      'Lay down on your back, bend your knees and place your hands behind your head. Lift your shoulders off the ground and bring your right elbow to your left knee.',
+  startImage: 'assets/laydown.png',
+  finalImage: 'assets/knee_to_elbow_left_leg.png',
+  repetitions: 10,
+  duration: null,
+);
+
+final Exercise kneeToElbowRightLeg = Exercise(
+  name: 'Knee to Elbow & Right Leg',
+  description:
+      'Lay down on your back, bend your knees and place your hands behind your head. Lift your shoulders off the ground and bring your left elbow to your right knee.',
+  startImage: 'assets/laydown.png',
+  finalImage: 'assets/knee_to_elbow_right_leg.png',
+  repetitions: 10,
+  duration: null,
+);
+
+final Exercise kneeToBothLegs = Exercise(
+  name: 'Knee to Both Legs',
+  description:
+      'Lay down on your back, bend your knees and place your hands behind your head. Lift your shoulders off the ground and bring your elbows to your knees.',
+  startImage: 'assets/laydown.png',
+  finalImage: 'assets/knee_to_elbow_both_legs.png',
+  repetitions: 10,
+  duration: null,
+);
+
 final Exercise kneeToElbow = Exercise(
   name: 'Knee to Elbow',
   description:

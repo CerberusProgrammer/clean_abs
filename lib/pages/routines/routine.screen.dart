@@ -2,6 +2,7 @@ import 'package:clean_abs/components/card.routine.dart';
 import 'package:clean_abs/config/data/routines.dart';
 import 'package:clean_abs/config/theme/color.theme.dart';
 import 'package:clean_abs/config/theme/text.theme.dart';
+import 'package:clean_abs/pages/home.layout.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -14,10 +15,8 @@ class RoutineScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final routine = routines.firstWhere((routine) => routine.name == id);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(routine.name),
-      ),
+    return HomeLayout(
+      title: (routine.name),
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         children: [
@@ -60,25 +59,6 @@ class RoutineScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () => context.go('/routine/${routine.name}/workout'),
         child: const Icon(Icons.play_arrow),
-      ),
-      bottomNavigationBar: NavigationBar(
-        onDestinationSelected: (index) {
-          if (index == 0) {
-            context.go('/');
-          } else {
-            context.go('/stats');
-          }
-        },
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.bar_chart),
-            label: 'Stats',
-          ),
-        ],
       ),
     );
   }

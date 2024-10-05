@@ -1,6 +1,5 @@
 import 'package:clean_abs/config/models/routine_stat.dart';
 import 'package:clean_abs/pages/home.screen.dart';
-import 'package:clean_abs/pages/routines/routine.get_ready.screen.dart';
 import 'package:clean_abs/pages/routines/routine.screen.dart';
 import 'package:clean_abs/pages/routines/routine-timer.view.dart';
 import 'package:clean_abs/pages/stats/stats.screen.dart';
@@ -41,15 +40,6 @@ final appRoutes = GoRouter(
         final id = state.pathParameters['id']!;
         return NoTransitionPage(
           child: RoutineTimerView(id: id),
-        );
-      },
-    ),
-    GoRoute(
-      path: '/routine/:id/get-ready',
-      name: 'routine_get_ready',
-      pageBuilder: (context, state) {
-        return const NoTransitionPage(
-          child: RoutineGetReadyScreen(),
         );
       },
     ),

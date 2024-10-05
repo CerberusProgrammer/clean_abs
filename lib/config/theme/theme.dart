@@ -31,7 +31,7 @@ ThemeData themeData = ThemeData(
     secondaryLabelStyle: textTheme.titleSmall,
     brightness: Brightness.dark,
   ),
-  listTileTheme:  ListTileThemeData(
+  listTileTheme: ListTileThemeData(
     contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
     titleTextStyle: textTheme.bodyLarge,
     subtitleTextStyle: textTheme.bodyMedium,

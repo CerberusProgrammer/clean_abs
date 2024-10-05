@@ -1,4 +1,5 @@
 import 'package:clean_abs/config/models/routine.dart';
+import 'package:clean_abs/pages/home.layout.dart';
 import 'package:clean_abs/providers/routines_provider.dart';
 import 'package:clean_abs/providers/filter_provider.dart';
 import 'package:flutter/material.dart';
@@ -31,10 +32,8 @@ class HomeScreen extends ConsumerWidget {
             }
           }).toList();
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Clean Abs'),
-      ),
+    return HomeLayout(
+      title: 'Clean Abs',
       body: Column(
         children: [
           Padding(
@@ -106,23 +105,6 @@ class HomeScreen extends ConsumerWidget {
                 }
               },
             ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: NavigationBar(
-        onDestinationSelected: (index) {
-          if (index == 1) {
-            context.go('/stats');
-          }
-        },
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.bar_chart),
-            label: 'Stats',
           ),
         ],
       ),

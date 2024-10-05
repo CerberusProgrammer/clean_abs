@@ -4,11 +4,13 @@ import 'package:go_router/go_router.dart';
 class HomeLayout extends StatelessWidget {
   final String? title;
   final Widget? body;
+  final Widget? floatingActionButton;
 
   const HomeLayout({
     super.key,
     this.body,
     this.title,
+    this.floatingActionButton,
   });
 
   @override
@@ -40,6 +42,7 @@ class HomeLayout extends StatelessWidget {
           ),
         ],
       ),
+      floatingActionButton: floatingActionButton,
     );
   }
 }

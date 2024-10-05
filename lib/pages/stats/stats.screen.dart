@@ -1,8 +1,8 @@
 import 'package:clean_abs/config/theme/color.theme.dart';
+import 'package:clean_abs/pages/home.layout.dart';
 import 'package:clean_abs/pages/stats/stats.provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 
 class StatsScreen extends ConsumerWidget {
@@ -24,10 +24,8 @@ class StatsScreen extends ConsumerWidget {
     final totalExercisesCompletedToday =
         statsNotifier.getTotalExercisesCompletedForDay(now);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Stats of your week'),
-      ),
+    return HomeLayout(
+      title: 'Stats of your week',
       body: routineStats.isEmpty
           ? const Center(
               child: Text('No routines completed yet'),
@@ -147,24 +145,6 @@ class StatsScreen extends ConsumerWidget {
                 ),
               ],
             ),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: 1,
-        onDestinationSelected: (index) {
-          if (index == 0) {
-            context.go('/');
-          }
-        },
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.bar_chart),
-            label: 'Stats',
-          ),
-        ],
-      ),
     );
   }
 

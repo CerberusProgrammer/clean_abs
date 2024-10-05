@@ -18,6 +18,13 @@ final appRoutes = GoRouter(
       ),
     ),
     GoRoute(
+      path: '/stats',
+      name: 'stats',
+      pageBuilder: (context, state) => const NoTransitionPage(
+        child: StatsScreen(),
+      ),
+    ),
+    GoRoute(
       path: '/routine/:id',
       name: 'routine',
       pageBuilder: (context, state) {
@@ -55,13 +62,6 @@ final appRoutes = GoRouter(
           child: RoutineCompleteView(routineStat: routineStat),
         );
       },
-    ),
-    GoRoute(
-      path: '/stats',
-      name: 'stats',
-      pageBuilder: (context, state) => const NoTransitionPage(
-        child: StatsScreen(),
-      ),
     ),
   ],
 );

@@ -1,4 +1,5 @@
 import 'package:clean_abs/config/models/routine_stat.dart';
+import 'package:clean_abs/pages/exercises/exercise.view.dart';
 import 'package:clean_abs/pages/exercises/exercises.screen.dart';
 import 'package:clean_abs/pages/home.screen.dart';
 import 'package:clean_abs/pages/routines/routine.screen.dart';
@@ -18,12 +19,22 @@ final appRoutes = GoRouter(
       ),
     ),
     GoRoute(
-      path: "/exercises",
-      name: "exercises",
-      pageBuilder: (context, state) => const NoTransitionPage(
-        child: ExercisesScreen(),
-      ),
-    ),
+        path: "/exercises",
+        name: "exercises",
+        pageBuilder: (context, state) => const NoTransitionPage(
+              child: ExercisesScreen(),
+            ),
+        routes: [
+          GoRoute(
+            path: ":name",
+            pageBuilder: (context, state) {
+              final name = state.pathParameters['name']!;
+              return NoTransitionPage(
+                child: ExerciseView(name: name),
+              );
+            },
+          ),
+        ]),
     GoRoute(
       path: '/stats',
       name: 'stats',

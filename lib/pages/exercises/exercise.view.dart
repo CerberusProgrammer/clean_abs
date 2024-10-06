@@ -27,9 +27,13 @@ class ExerciseView extends ConsumerWidget {
                 final exercise = exercises[index];
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4.0),
-                  child: ListTile(
-                    title: Text(exercise.name),
-                    onTap: () {},
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(exercise.name),
+                      const SizedBox(height: 8),
+                      Text(exercise.description),
+                    ],
                   ),
                 );
               },

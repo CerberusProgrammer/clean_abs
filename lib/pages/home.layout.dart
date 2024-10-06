@@ -13,6 +13,23 @@ class HomeLayout extends StatelessWidget {
     this.floatingActionButton,
   });
 
+  int getSelectedIndex(BuildContext context) {
+    final route = GoRouter.of(context).routerDelegate.currentConfiguration;
+    final fullPathRoute = route.fullPath;
+    final location = fullPathRoute.split('?').first;
+
+    switch (location) {
+      case '/':
+        return 0;
+      case '/exercises':
+        return 1;
+      case '/stats':
+        return 2;
+      default:
+        return 0;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,12 +38,16 @@ class HomeLayout extends StatelessWidget {
       ),
       body: body,
       bottomNavigationBar: NavigationBar(
+        selectedIndex: getSelectedIndex(context),
         onDestinationSelected: (index) {
           switch (index) {
             case 0:
               context.go('/');
               break;
             case 1:
+              context.go('/exercises');
+              break;
+            case 2:
               context.go('/stats');
               break;
           }
@@ -35,6 +56,10 @@ class HomeLayout extends StatelessWidget {
           NavigationDestination(
             icon: Icon(Icons.home),
             label: 'Home',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.fitness_center),
+            label: 'Exercises',
           ),
           NavigationDestination(
             icon: Icon(Icons.bar_chart),

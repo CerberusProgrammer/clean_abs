@@ -1,3 +1,4 @@
+import 'package:clean_abs/pages/exercises/exercises.provider.dart';
 import 'package:clean_abs/pages/home.layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,22 +8,31 @@ class ExercisesScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final exercisesProvider = ref.watch(exercisesProvider);
+    final exercisesState = ref.watch(exercisesProvider);
+
+    if (exercisesState.isLoading == true) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
+    if (exercisesState.hasError == true) {
+      return const Center(child: Text('An error occurred'));
+    }
+
+    final exercises = exercisesState.exercises ?? [];
 
     return HomeLayout(
       title: "Exercises",
       body: ListView.builder(
-        itemCount: ref.watch(exercisesProvider).length,
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        itemCount: exercises.length,
         itemBuilder: (context, index) {
-          final exercise = ref.watch(exercisesProvider)[index];
-          return ListTile(
-            title: Text(exercise.name),
-            onTap: () {
-              Navigator.of(context).pushNamed(
-                '/exercise',
-                arguments: exercise,
-              );
-            },
+          final exercise = exercises[index];
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4.0),
+            child: ListTile(
+              title: Text(exercise.name),
+              onTap: () {},
+            ),
           );
         },
       ),

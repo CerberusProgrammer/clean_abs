@@ -2,6 +2,7 @@ import 'package:clean_abs/pages/exercises/exercises.provider.dart';
 import 'package:clean_abs/pages/home.layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class ExercisesScreen extends ConsumerWidget {
   const ExercisesScreen({super.key});
@@ -31,7 +32,7 @@ class ExercisesScreen extends ConsumerWidget {
             padding: const EdgeInsets.symmetric(vertical: 4.0),
             child: ListTile(
               title: Text(exercise.name),
-              onTap: () {},
+              onTap: () => context.push("/exercises/${exercise.name}"),
             ),
           );
         },

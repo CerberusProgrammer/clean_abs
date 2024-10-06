@@ -1,4 +1,5 @@
 import 'package:clean_abs/config/models/routine_stat.dart';
+import 'package:clean_abs/pages/exercises/exercises.screen.dart';
 import 'package:clean_abs/pages/home.screen.dart';
 import 'package:clean_abs/pages/routines/routine.screen.dart';
 import 'package:clean_abs/pages/routines/routine-timer.view.dart';
@@ -14,6 +15,13 @@ final appRoutes = GoRouter(
       name: 'home',
       pageBuilder: (context, state) => const NoTransitionPage(
         child: HomeScreen(),
+      ),
+    ),
+    GoRoute(
+      path: "/exercises",
+      name: "exercises",
+      pageBuilder: (context, state) => const NoTransitionPage(
+        child: ExercisesScreen(),
       ),
     ),
     GoRoute(

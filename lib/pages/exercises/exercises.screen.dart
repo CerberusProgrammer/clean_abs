@@ -7,8 +7,25 @@ class ExercisesScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final exercisesProvider = ref.watch(exercisesProvider);
+
     return HomeLayout(
       title: "Exercises",
+      body: ListView.builder(
+        itemCount: ref.watch(exercisesProvider).length,
+        itemBuilder: (context, index) {
+          final exercise = ref.watch(exercisesProvider)[index];
+          return ListTile(
+            title: Text(exercise.name),
+            onTap: () {
+              Navigator.of(context).pushNamed(
+                '/exercise',
+                arguments: exercise,
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }
